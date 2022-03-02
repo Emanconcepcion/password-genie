@@ -56,5 +56,23 @@ function writePassword() {
 
 }
 
+var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+var lowerChars = "abcdefghijklmnopqrstuvwxyz".split("");
+var specialChars = "!@#$%^&*()".split("");
+var passwordLength = "8-128"
+var selectedChars = [];
+
+function generatePassword() {
+  var password = "";
+  passwordLength = prompt("Please enter the number of characters you want in your password, but it must be more than 8 and less than 128 characters.")
+  if(+passwordLength < 8 || +passwordLength > 8) {
+    alert("You must select between 8 and 128");
+
+    return generatePassword;
+  }
+}
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
