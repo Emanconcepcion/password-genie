@@ -59,6 +59,7 @@ function writePassword() {
 var upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 var lowerChars = "abcdefghijklmnopqrstuvwxyz".split("");
 var specialChars = "!@#$%^&*()".split("");
+var numberChars = "1234567890".split("");
 var passwordLength = "8-128"
 var selectedChars = [];
 
@@ -84,18 +85,17 @@ function generatePassword() {
   }
 
   if (numberCharsC) {
-    selectedChars=selectedChars.concat(numberCharsC)
+    selectedChars=selectedChars.concat(numberChars)
   }
 
   if (specialCharsC) {
-    selectedChars=selectedChars.concat(specialCharsC)
+    selectedChars=selectedChars.concat(specialChars)
   }
-
-  console.log(selectedChars) 
+ 
 
   for(var i = 0; i < parseInt(passwordLength); i++) {
     var randomIndex = Math.floor(Math.random()*selectedChars.length);
-    console.log(specialChars[randomIndex])
+    password+=selectedChars[randomIndex]
   }
 
   return password;
