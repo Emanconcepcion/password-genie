@@ -65,14 +65,41 @@ var selectedChars = [];
 function generatePassword() {
   var password = "";
   passwordLength = prompt("Please enter the number of characters you want in your password, but it must be more than 8 and less than 128 characters.")
-  if(+passwordLength < 8 || +passwordLength > 8) {
+  if(+passwordLength < 8 || +passwordLength > 128) {
     alert("You must select between 8 and 128");
 
     return generatePassword;
   }
-}
+  var upperCharsC = confirm("Do you want uppercases in your password?");
+  var lowerCharsC = confirm("Do you want lowercases in your password?");
+  var numberCharsC = confirm("Do you want numbers in your password?");
+  var specialCharsC = confirm("Do you want special characters in your password?");
+
+  if (upperCharsC) {
+    selectedChars=selectedChars.concat(upperChars)
+  }
+
+  if (lowerCharsC) {
+    selectedChars=selectedChars.concat(lowerChars)
+  }
+
+  if (numberCharsC) {
+    selectedChars=selectedChars.concat(numberCharsC)
+  }
+
+  if (specialCharsC) {
+    selectedChars=selectedChars.concat(specialCharsC)
+  }
+
+  console.log(selectedChars) 
+
+  for(var i = 0; i < parseInt(passwordLength); i++) {
+    var randomIndex = Math.floor(Math.random()*selectedChars.length);
+    console.log(specialChars[randomIndex])
+  }
+
+  return password;
+};
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
